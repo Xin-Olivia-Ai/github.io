@@ -9,507 +9,271 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-
 :root{
-  /* deep dark palette */
-  --bg:#0D0F14;
-  --bg2:#13161E;
-  --bg3:#181C26;
-  --card:#1A1E2A;
-  --card2:#1F2435;
-  --border:rgba(255,255,255,0.07);
-  --border2:rgba(255,255,255,0.12);
-
-  /* accents */
-  --gold:#C8965A;
-  --gold-lt:rgba(200,150,90,0.12);
-  --gold-glow:rgba(200,150,90,0.25);
-  --coral:#D4705A;
-  --coral-lt:rgba(212,112,90,0.12);
-  --teal:#5AB8A0;
-  --teal-lt:rgba(90,184,160,0.1);
-  --violet:#8B7FD4;
-  --violet-lt:rgba(139,127,212,0.1);
-
-  /* text */
-  --ink:#F0EDE8;
-  --ink2:#A8A49E;
-  --ink3:#6A6660;
-
+  --bg:#0D0F14; --bg2:#13161E; --bg3:#181C26;
+  --card:#1A1E2A; --card2:#1F2435;
+  --border:rgba(255,255,255,0.07); --border2:rgba(255,255,255,0.13);
+  --gold:#C8965A; --gold-lt:rgba(200,150,90,0.12); --gold-glow:rgba(200,150,90,0.3);
+  --coral:#D4705A; --coral-lt:rgba(212,112,90,0.12);
+  --teal:#5AB8A0; --teal-lt:rgba(90,184,160,0.1);
+  --violet:#8B7FD4; --violet-lt:rgba(139,127,212,0.1);
+  --ink:#F0EDE8; --ink2:#B0ACA6; --ink3:#6A6660;
   --shadow:0 8px 32px rgba(0,0,0,0.4);
-  --shadow-lg:0 20px 60px rgba(0,0,0,0.5);
-  --radius:14px;
+  --r:14px;
 }
-
 html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 
 /* ── CURSOR GLOW ── */
-#cursor-glow{
-  position:fixed;width:400px;height:400px;border-radius:50%;
-  background:radial-gradient(circle,rgba(200,150,90,0.06) 0%,transparent 70%);
-  pointer-events:none;z-index:9999;transform:translate(-50%,-50%);
-  transition:opacity 0.3s;
-}
+#cursor-glow{position:fixed;width:450px;height:450px;border-radius:50%;background:radial-gradient(circle,rgba(200,150,90,0.055) 0%,transparent 70%);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:opacity 0.3s}
 
 /* ── NEURAL CANVAS ── */
-#neural-canvas{
-  position:fixed;top:0;left:0;width:100%;height:100%;
-  pointer-events:none;z-index:0;
-}
+#neural-canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0}
 
 /* ── NAV ── */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:200;
-  display:flex;justify-content:space-between;align-items:center;
-  padding:1.1rem 5rem;
-  background:rgba(13,15,20,0.82);backdrop-filter:blur(20px);
-  border-bottom:1px solid var(--border);transition:border-color 0.3s;
-}
-nav.scrolled{border-color:var(--border2);}
-.nav-logo{
-  font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:300;
-  color:var(--ink);text-decoration:none;letter-spacing:0.04em;
-}
-.nav-logo em{font-style:italic;color:var(--gold);}
-.nav-links{display:flex;gap:2rem;align-items:center}
-.nav-links a{
-  font-size:0.78rem;font-weight:400;color:var(--ink2);
-  text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;
-  transition:color 0.2s;
-}
-.nav-links a:hover{color:var(--ink);}
-.nav-cv{
-  padding:0.4rem 1.1rem;border:1px solid var(--border2);border-radius:100px;
-  font-size:0.75rem !important;color:var(--gold) !important;
-  letter-spacing:0.04em !important;text-transform:none !important;
-  transition:all 0.2s !important;
-}
-.nav-cv:hover{background:var(--gold) !important;color:#000 !important;border-color:var(--gold) !important;}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1.1rem 5rem;background:rgba(13,15,20,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:border-color 0.3s}
+nav.scrolled{border-color:var(--border2)}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:var(--ink);text-decoration:none;letter-spacing:0.04em}
+.nav-logo em{font-style:italic;color:var(--gold)}
+.nav-links{display:flex;gap:1.8rem;align-items:center}
+.nav-links a{font-size:0.8rem;font-weight:400;color:var(--ink2);text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover{color:var(--ink)}
+.nav-cv{padding:0.4rem 1.1rem;border:1px solid rgba(200,150,90,0.4);border-radius:100px;font-size:0.75rem!important;color:var(--gold)!important;letter-spacing:0.04em!important;text-transform:none!important;transition:all 0.2s!important}
+.nav-cv:hover{background:var(--gold)!important;color:#000!important;border-color:var(--gold)!important}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
 .hamburger span{display:block;width:20px;height:1.5px;background:var(--ink2);border-radius:2px}
-.mobile-menu{
-  display:none;position:fixed;top:61px;left:0;right:0;
-  background:var(--bg2);border-bottom:1px solid var(--border);
-  padding:1.5rem 2rem;flex-direction:column;gap:1.2rem;z-index:199;
-}
+.mobile-menu{display:none;position:fixed;top:61px;left:0;right:0;background:var(--bg2);border-bottom:1px solid var(--border);padding:1.5rem 2rem;flex-direction:column;gap:1.2rem;z-index:199}
 .mobile-menu.open{display:flex}
-.mobile-menu a{font-size:0.9rem;color:var(--ink2);text-decoration:none}
+.mobile-menu a{font-size:1rem;color:var(--ink2);text-decoration:none}
 .mobile-menu a:hover{color:var(--gold)}
 
 /* ── HERO ── */
-#hero{
-  min-height:100vh;display:grid;grid-template-columns:1fr 1fr;
-  padding-top:70px;position:relative;z-index:1;overflow:hidden;
-}
-.hero-left{
-  display:flex;flex-direction:column;justify-content:center;
-  padding:5rem 4rem 5rem 5rem;
-}
-/* avatar row */
-.hero-avatar-row{display:flex;align-items:center;gap:1rem;margin-bottom:2.5rem;}
-.hero-avatar{
-  width:64px;height:64px;border-radius:50%;overflow:hidden;flex-shrink:0;
-  border:1.5px solid var(--gold-glow);
-  box-shadow:0 0 0 6px rgba(200,150,90,0.06),0 0 20px rgba(200,150,90,0.12);
-}
+#hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding-top:70px;position:relative;z-index:1;overflow:hidden}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:5rem 4rem 5rem 5rem}
+.hero-avatar-row{display:flex;align-items:center;gap:1rem;margin-bottom:2.5rem}
+.hero-avatar{width:68px;height:68px;border-radius:50%;overflow:hidden;flex-shrink:0;border:1.5px solid var(--gold-glow);box-shadow:0 0 0 6px rgba(200,150,90,0.06),0 0 20px rgba(200,150,90,0.12)}
 .hero-avatar img{width:100%;height:100%;object-fit:cover;object-position:top center}
-.hero-avatar-text{}
-.hero-avatar-name{font-size:0.88rem;font-weight:500;color:var(--ink);margin-bottom:0.1rem}
-.hero-avatar-sub{font-size:0.72rem;color:var(--ink3);display:flex;align-items:center;gap:0.4rem}
-.status-dot{
-  display:inline-block;width:6px;height:6px;border-radius:50%;background:#5cb85c;
-  flex-shrink:0;animation:pulse 2s infinite;
-}
+.hero-avatar-name{font-size:0.92rem;font-weight:500;color:var(--ink);margin-bottom:0.1rem}
+.hero-avatar-sub{font-size:0.74rem;color:var(--ink3);display:flex;align-items:center;gap:0.4rem}
+.status-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#5cb85c;flex-shrink:0;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(92,184,92,0.4)}50%{opacity:0.7;box-shadow:0 0 0 4px rgba(92,184,92,0)}}
-
-.hero-eyebrow{
-  font-family:'DM Mono',monospace;font-size:0.68rem;font-weight:300;
-  letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);
-  margin-bottom:1.2rem;display:flex;align-items:center;gap:0.8rem;
-}
-.hero-eyebrow::before{content:'';width:24px;height:1px;background:var(--gold);opacity:0.5;}
-
-h1.hero-name{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(3.5rem,6vw,6.5rem);font-weight:300;
-  line-height:0.95;letter-spacing:-0.02em;margin-bottom:2rem;
-}
-h1.hero-name em{font-style:italic;color:var(--gold);}
-
-/* typewriter desc */
-.hero-desc{
-  font-size:0.97rem;color:var(--ink2);max-width:420px;line-height:1.9;
-  margin-bottom:2.2rem;font-weight:300;min-height:3.5em;
-}
-.hero-desc strong{color:var(--ink);font-weight:500;}
-.cursor-blink{
-  display:inline-block;width:2px;height:1em;background:var(--gold);
-  margin-left:2px;vertical-align:text-bottom;
-  animation:blink 1s step-end infinite;
-}
+.hero-eyebrow{font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;display:flex;align-items:center;gap:0.8rem;opacity:0.8}
+.hero-eyebrow::before{content:'';width:24px;height:1px;background:var(--gold);opacity:0.6}
+h1.hero-name{font-family:'Cormorant Garamond',serif;font-size:clamp(4rem,6.5vw,7rem);font-weight:300;line-height:0.92;letter-spacing:-0.02em;margin-bottom:2rem}
+h1.hero-name em{font-style:italic;color:var(--gold)}
+.hero-desc{font-size:1.05rem;color:var(--ink2);max-width:430px;line-height:1.9;margin-bottom:2.2rem;font-weight:300;min-height:4em}
+.hero-desc strong{color:var(--ink);font-weight:500}
+.cursor-blink{display:inline-block;width:2px;height:1.1em;background:var(--gold);margin-left:2px;vertical-align:text-bottom;animation:blink 1s step-end infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.hero-chips{display:flex;flex-wrap:wrap;gap:0.45rem;margin-bottom:2.5rem}
+.chip{font-size:0.73rem;font-weight:400;padding:0.3rem 0.85rem;border-radius:100px;border:1px solid var(--border2);color:var(--ink3);background:transparent;transition:all 0.2s;cursor:default}
+.chip:hover{border-color:var(--gold);color:var(--gold)}
+.chip.gold{background:var(--gold-lt);color:var(--gold);border-color:rgba(200,150,90,0.3)}
+.chip.teal{background:var(--teal-lt);color:var(--teal);border-color:rgba(90,184,160,0.25)}
+.chip.coral{background:var(--coral-lt);color:var(--coral);border-color:rgba(212,112,90,0.25)}
+.chip.violet{background:var(--violet-lt);color:var(--violet);border-color:rgba(139,127,212,0.25)}
+.hero-btns{display:flex;gap:0.85rem;flex-wrap:wrap}
+.btn{padding:0.82rem 2rem;font-size:0.88rem;font-weight:500;border-radius:100px;text-decoration:none;transition:all 0.22s;display:inline-block;letter-spacing:0.03em;border:none;cursor:pointer;font-family:'DM Sans',sans-serif}
+.btn-gold{background:var(--gold);color:#0D0F14}
+.btn-gold:hover{background:#D9A46A;transform:translateY(-2px);box-shadow:0 8px 24px rgba(200,150,90,0.3)}
+.btn-outline{background:transparent;color:var(--ink2);border:1px solid var(--border2)}
+.btn-outline:hover{border-color:var(--ink);color:var(--ink)}
 
-.hero-chips{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:2.5rem;}
-.chip{
-  font-size:0.7rem;font-weight:400;padding:0.28rem 0.8rem;border-radius:100px;
-  border:1px solid var(--border2);color:var(--ink3);background:transparent;
-  letter-spacing:0.03em;transition:all 0.2s;cursor:default;
-}
-.chip:hover{border-color:var(--gold);color:var(--gold);}
-.chip.gold{background:var(--gold-lt);color:var(--gold);border-color:rgba(200,150,90,0.3);}
-.chip.teal{background:var(--teal-lt);color:var(--teal);border-color:rgba(90,184,160,0.25);}
-.chip.coral{background:var(--coral-lt);color:var(--coral);border-color:rgba(212,112,90,0.25);}
-.chip.violet{background:var(--violet-lt);color:var(--violet);border-color:rgba(139,127,212,0.25);}
-
-.hero-btns{display:flex;gap:0.8rem;flex-wrap:wrap;}
-.btn{
-  padding:0.75rem 1.8rem;font-size:0.82rem;font-weight:500;border-radius:100px;
-  text-decoration:none;transition:all 0.22s;display:inline-block;
-  letter-spacing:0.03em;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;
-}
-.btn-gold{background:var(--gold);color:#0D0F14;}
-.btn-gold:hover{background:#D9A46A;transform:translateY(-2px);box-shadow:0 8px 24px rgba(200,150,90,0.3);}
-.btn-outline{background:transparent;color:var(--ink2);border:1px solid var(--border2);}
-.btn-outline:hover{border-color:var(--ink);color:var(--ink);}
-
-/* hero right — photo stack */
-.hero-right{position:relative;overflow:hidden;background:var(--bg2);}
-.hero-photo-main{
-  position:absolute;inset:0;
-}
-.hero-photo-main img{width:100%;height:100%;object-fit:cover;object-position:top center;opacity:0.6;}
-.hero-photo-main::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(to right,var(--bg) 0%,transparent 30%),
-             linear-gradient(to top,var(--bg) 0%,transparent 40%);
-}
-.hero-photo-mini{
-  position:absolute;bottom:2.5rem;right:2rem;
-  display:flex;flex-direction:column;gap:0.6rem;z-index:2;
-}
-.mini-photo{
-  width:90px;height:90px;border-radius:10px;overflow:hidden;
-  border:1.5px solid var(--border2);
-  box-shadow:var(--shadow);transition:transform 0.2s;cursor:pointer;
-}
-.mini-photo:hover{transform:scale(1.06);}
-.mini-photo img{width:100%;height:100%;object-fit:cover;}
-.hero-stat-bar{
-  position:absolute;bottom:2.5rem;left:2.5rem;z-index:2;
-  display:flex;flex-direction:column;gap:0.5rem;
-}
-.hero-stat{
-  background:rgba(13,15,20,0.75);backdrop-filter:blur(10px);
-  border:1px solid var(--border2);border-radius:10px;
-  padding:0.65rem 1rem;display:flex;align-items:baseline;gap:0.5rem;
-}
-.hs-num{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;color:var(--gold);}
-.hs-lbl{font-size:0.68rem;color:var(--ink3);}
+/* hero right */
+.hero-right{position:relative;overflow:hidden;background:var(--bg2)}
+.hero-photo-main{position:absolute;inset:0}
+.hero-photo-main img{width:100%;height:100%;object-fit:cover;object-position:top center;opacity:0.55}
+.hero-photo-main::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,var(--bg) 0%,transparent 35%),linear-gradient(to top,var(--bg) 0%,transparent 45%)}
+.hero-photo-mini{position:absolute;bottom:2.5rem;right:1.5rem;display:flex;flex-direction:column;gap:0.55rem;z-index:2}
+.mini-photo{width:85px;height:85px;border-radius:10px;overflow:hidden;border:1.5px solid var(--border2);box-shadow:var(--shadow);transition:transform 0.2s;cursor:pointer}
+.mini-photo:hover{transform:scale(1.07)}
+.mini-photo img{width:100%;height:100%;object-fit:cover}
+.hero-stat-bar{position:absolute;bottom:2.5rem;left:2rem;z-index:2;display:flex;flex-direction:column;gap:0.5rem}
+.hero-stat{background:rgba(13,15,20,0.8);backdrop-filter:blur(10px);border:1px solid var(--border2);border-radius:10px;padding:0.65rem 1rem;display:flex;align-items:baseline;gap:0.5rem}
+.hs-num{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;color:var(--gold);line-height:1}
+.hs-lbl{font-size:0.7rem;color:var(--ink3)}
 
 /* ── SHARED ── */
-.wrap{max-width:1100px;margin:0 auto;padding:7rem 5rem;}
-hr.div{border:none;border-top:1px solid var(--border);margin:0 5rem;}
-.eyebrow{
-  font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:300;
-  letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);
-  margin-bottom:1rem;display:flex;align-items:center;gap:0.8rem;
-}
-.eyebrow::before{content:'';width:20px;height:1px;background:var(--gold);opacity:0.5;}
-.section-h{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(2rem,3.5vw,3rem);font-weight:300;
-  color:var(--ink);margin-bottom:3.5rem;line-height:1.2;
-}
-.section-h em{font-style:italic;color:var(--gold);}
-
-/* reveal */
-.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s ease;}
-.reveal.visible{opacity:1;transform:translateY(0);}
-.fi{animation:fadeUp 0.8s ease both;}
+.wrap{max-width:1100px;margin:0 auto;padding:7rem 5rem}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 5rem}
+.eyebrow{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:flex;align-items:center;gap:0.8rem;opacity:0.8}
+.eyebrow::before{content:'';width:20px;height:1px;background:var(--gold);opacity:0.6}
+.section-h{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,3.8vw,3.2rem);font-weight:300;color:var(--ink);margin-bottom:3.5rem;line-height:1.15}
+.section-h em{font-style:italic;color:var(--gold)}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.fi{animation:fadeUp 0.8s ease both}
 .d1{animation-delay:.12s}.d2{animation-delay:.24s}.d3{animation-delay:.38s}.d4{animation-delay:.52s}
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 
 /* ── ABOUT ── */
-#about{background:var(--bg2);position:relative;z-index:1;}
-.about-grid{display:grid;grid-template-columns:3fr 2fr;gap:5rem;align-items:start;}
-.about-text{font-size:1rem;font-weight:300;color:var(--ink2);line-height:1.9;}
-.about-text p+p{margin-top:1.2rem;}
-.about-text strong{color:var(--gold);font-weight:500;}
-.info-block{margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border);}
-.info-block:last-child{border:none;margin:0;}
-.info-label{font-size:0.65rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink3);margin-bottom:0.75rem;}
-.info-school{font-size:0.88rem;font-weight:500;color:var(--ink);}
-.info-deg{font-size:0.78rem;color:var(--ink3);font-weight:300;margin-top:0.15rem;}
-.info-yr{
-  display:inline-block;margin-top:0.4rem;font-size:0.68rem;font-weight:500;
-  background:var(--gold-lt);color:var(--gold);padding:0.18rem 0.6rem;border-radius:100px;
-  border:1px solid rgba(200,150,90,0.2);
-}
-.tag-wrap{display:flex;flex-wrap:wrap;gap:0.35rem;}
-.tag{
-  font-size:0.7rem;padding:0.22rem 0.65rem;border-radius:100px;
-  background:rgba(255,255,255,0.04);color:var(--ink3);border:1px solid var(--border);
-  transition:all 0.2s;cursor:default;
-}
-.tag:hover{border-color:var(--border2);color:var(--ink2);}
-.tag.gold{background:var(--gold-lt);color:var(--gold);border-color:rgba(200,150,90,0.25);}
-.tag.teal{background:var(--teal-lt);color:var(--teal);border-color:rgba(90,184,160,0.2);}
-.tag.coral{background:var(--coral-lt);color:var(--coral);border-color:rgba(212,112,90,0.2);}
+#about{background:var(--bg2);position:relative;z-index:1}
+.about-grid{display:grid;grid-template-columns:3fr 2fr;gap:5rem;align-items:start}
+.about-text{font-size:1.02rem;font-weight:300;color:var(--ink2);line-height:1.9}
+.about-text p+p{margin-top:1.2rem}
+.about-text strong{color:var(--gold);font-weight:500}
+.info-block{margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}
+.info-block:last-child{border:none;margin:0}
+.info-label{font-size:0.68rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink3);margin-bottom:0.75rem}
+.info-school{font-size:0.9rem;font-weight:500;color:var(--ink)}
+.info-deg{font-size:0.8rem;color:var(--ink3);font-weight:300;margin-top:0.15rem}
+.info-yr{display:inline-block;margin-top:0.4rem;font-size:0.7rem;font-weight:500;background:var(--gold-lt);color:var(--gold);padding:0.2rem 0.65rem;border-radius:100px;border:1px solid rgba(200,150,90,0.2)}
+.tag-wrap{display:flex;flex-wrap:wrap;gap:0.35rem}
+.tag{font-size:0.72rem;padding:0.24rem 0.68rem;border-radius:100px;background:rgba(255,255,255,0.04);color:var(--ink3);border:1px solid var(--border);transition:all 0.2s;cursor:default}
+.tag:hover{border-color:var(--border2);color:var(--ink2)}
+.tag.gold{background:var(--gold-lt);color:var(--gold);border-color:rgba(200,150,90,0.25)}
+.tag.teal{background:var(--teal-lt);color:var(--teal);border-color:rgba(90,184,160,0.2)}
+.tag.coral{background:var(--coral-lt);color:var(--coral);border-color:rgba(212,112,90,0.2)}
 
-/* ── RESEARCH — flip cards ── */
-#research{position:relative;z-index:1;}
-.res-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
-.res-flip{perspective:800px;height:220px;cursor:pointer;}
-.res-flip-inner{
-  position:relative;width:100%;height:100%;
-  transform-style:preserve-3d;transition:transform 0.55s cubic-bezier(0.4,0,0.2,1);
-}
-.res-flip:hover .res-flip-inner,.res-flip.flipped .res-flip-inner{transform:rotateY(180deg);}
-.res-face{
-  position:absolute;inset:0;backface-visibility:hidden;
-  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
-  padding:1.6rem;display:flex;flex-direction:column;
-}
-.res-face-back{
-  transform:rotateY(180deg);
-  background:var(--card2);border-color:var(--border2);
-}
-.res-badge{
-  display:inline-flex;align-items:center;gap:0.4rem;
-  font-size:0.65rem;font-weight:500;letter-spacing:0.06em;
-  padding:0.2rem 0.65rem;border-radius:100px;margin-bottom:0.9rem;align-self:flex-start;
-}
-.res-badge.current{background:rgba(92,184,92,0.12);color:#5cb85c;border:1px solid rgba(92,184,92,0.25);}
-.res-badge.past{background:rgba(255,255,255,0.05);color:var(--ink3);border:1px solid var(--border);}
-.res-title{font-size:0.92rem;font-weight:500;color:var(--ink);margin-bottom:0.3rem;line-height:1.35;}
-.res-org{font-size:0.75rem;color:var(--ink3);font-weight:300;line-height:1.4;}
-.res-hint{
-  margin-top:auto;font-size:0.65rem;color:var(--ink3);
-  display:flex;align-items:center;gap:0.3rem;
-}
-.res-back-desc{font-size:0.78rem;color:var(--ink2);line-height:1.72;font-weight:300;}
-.res-period{
-  margin-top:auto;font-family:'DM Mono',monospace;font-size:0.65rem;
-  color:var(--gold);font-weight:300;
-}
+/* ── RESEARCH flip cards ── */
+#research{position:relative;z-index:1}
+.res-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.res-flip{perspective:900px;height:230px;cursor:pointer}
+.res-flip-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform 0.55s cubic-bezier(0.4,0,0.2,1)}
+.res-flip:hover .res-flip-inner{transform:rotateY(180deg)}
+.res-face{position:absolute;inset:0;backface-visibility:hidden;background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.7rem;display:flex;flex-direction:column}
+.res-face-back{transform:rotateY(180deg);background:var(--card2);border-color:var(--border2)}
+.res-badge{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.67rem;font-weight:500;letter-spacing:0.06em;padding:0.22rem 0.7rem;border-radius:100px;margin-bottom:0.9rem;align-self:flex-start}
+.res-badge.current{background:rgba(92,184,92,0.12);color:#5cb85c;border:1px solid rgba(92,184,92,0.25)}
+.res-badge.past{background:rgba(255,255,255,0.05);color:var(--ink3);border:1px solid var(--border)}
+.res-title{font-size:0.97rem;font-weight:500;color:var(--ink);margin-bottom:0.3rem;line-height:1.35}
+.res-org{font-size:0.78rem;color:var(--ink3);font-weight:300;line-height:1.4}
+.res-hint{margin-top:auto;font-size:0.67rem;color:var(--ink3);display:flex;align-items:center;gap:0.3rem}
+.res-back-desc{font-size:0.82rem;color:var(--ink2);line-height:1.75;font-weight:300}
+.res-period{margin-top:auto;font-family:'DM Mono',monospace;font-size:0.67rem;color:var(--gold);font-weight:300}
 
 /* ── PROJECTS ── */
-#projects{background:var(--bg2);position:relative;z-index:1;}
+#projects{background:var(--bg2);position:relative;z-index:1}
 
 /* CogniBuddy */
-.proj-hero{
-  background:var(--card);border:1px solid var(--border);border-radius:20px;
-  padding:3rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;
-  align-items:center;margin-bottom:1.2rem;position:relative;overflow:hidden;
-  transition:border-color 0.3s;
-}
-.proj-hero:hover{border-color:var(--border2);}
-.proj-hero::before{
-  content:'';position:absolute;top:-80px;right:-80px;
-  width:300px;height:300px;border-radius:50%;
-  background:radial-gradient(circle,rgba(200,150,90,0.06) 0%,transparent 70%);
-  pointer-events:none;
-}
-.ph-eyebrow{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;opacity:0.7;}
-.ph-title{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;color:var(--ink);margin-bottom:0.8rem;line-height:1;}
-.ph-title em{font-style:italic;color:var(--gold);}
-.ph-desc{font-size:0.85rem;color:var(--ink2);line-height:1.78;font-weight:300;margin-bottom:1.2rem;}
-.ph-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.5rem;}
-.ph-tag{
-  font-size:0.65rem;font-weight:500;padding:0.22rem 0.7rem;border-radius:100px;
-  background:rgba(200,150,90,0.1);color:var(--gold);border:1px solid rgba(200,150,90,0.2);
-}
-.ph-link{
-  font-size:0.82rem;font-weight:500;color:var(--gold);text-decoration:none;
-  display:inline-flex;align-items:center;gap:0.4rem;
-  transition:gap 0.2s;
-}
-.ph-link:hover{gap:0.7rem;}
-.ph-visual{
-  background:var(--bg3);border-radius:14px;padding:2rem;
-  border:1px solid var(--border);text-align:center;
-}
-.ph-logo{font-family:'Cormorant Garamond',serif;font-size:4rem;font-style:italic;color:rgba(200,150,90,0.2);margin-bottom:0.5rem;}
-.ph-stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-top:1rem;}
-.ph-stat{background:rgba(255,255,255,0.03);border-radius:10px;padding:0.8rem;border:1px solid var(--border);}
-.ph-stat-n{font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--gold);line-height:1;}
-.ph-stat-l{font-size:0.62rem;color:var(--ink3);margin-top:0.2rem;}
+.proj-hero{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:3rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-bottom:1.2rem;position:relative;overflow:hidden;transition:border-color 0.3s}
+.proj-hero:hover{border-color:var(--border2)}
+.proj-hero::before{content:'';position:absolute;top:-80px;right:-80px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(200,150,90,0.07) 0%,transparent 70%);pointer-events:none}
+.ph-eyebrow{font-family:'DM Mono',monospace;font-size:0.67rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;opacity:0.7}
+.ph-title{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;color:var(--ink);margin-bottom:0.8rem;line-height:1}
+.ph-title em{font-style:italic;color:var(--gold)}
+.ph-desc{font-size:0.88rem;color:var(--ink2);line-height:1.8;font-weight:300;margin-bottom:1.2rem}
+.ph-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.5rem}
+.ph-tag{font-size:0.67rem;font-weight:500;padding:0.24rem 0.72rem;border-radius:100px;background:var(--gold-lt);color:var(--gold);border:1px solid rgba(200,150,90,0.2)}
+.ph-link{font-size:0.85rem;font-weight:500;color:var(--gold);text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;transition:gap 0.2s}
+.ph-link:hover{gap:0.7rem}
+.ph-visual{background:var(--bg3);border-radius:14px;padding:2rem;border:1px solid var(--border);text-align:center}
+.ph-logo{font-family:'Cormorant Garamond',serif;font-size:4.5rem;font-style:italic;color:rgba(200,150,90,0.2);margin-bottom:0.5rem}
+.ph-stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-top:1rem}
+.ph-stat{background:rgba(255,255,255,0.03);border-radius:10px;padding:0.85rem;border:1px solid var(--border)}
+.ph-stat-n{font-family:'Cormorant Garamond',serif;font-size:1.7rem;color:var(--gold);line-height:1}
+.ph-stat-l{font-size:0.64rem;color:var(--ink3);margin-top:0.2rem}
 
-/* One Day — expanded */
-.oneday-card{
-  border:1px solid var(--border);border-radius:20px;overflow:hidden;
-  margin-bottom:1.2rem;background:var(--card);
-}
-.oneday-top{
-  background:linear-gradient(135deg,rgba(90,184,160,0.06) 0%,rgba(139,127,212,0.06) 100%);
-  padding:2.5rem 3rem 0;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:end;
-  border-bottom:1px solid var(--border);
-}
-.od-eyebrow{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--teal);margin-bottom:0.8rem;opacity:0.8;}
-.od-title{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;margin-bottom:0.7rem;line-height:1.15;color:var(--ink);}
-.od-title em{font-style:italic;color:var(--teal);}
-.od-desc{font-size:0.85rem;color:var(--ink2);line-height:1.78;font-weight:300;margin-bottom:1.5rem;}
-.od-tags{display:flex;flex-wrap:wrap;gap:0.4rem;}
-.od-tag{font-size:0.65rem;font-weight:500;padding:0.22rem 0.7rem;border-radius:100px;}
-.od-tag.teal{background:var(--teal-lt);color:var(--teal);border:1px solid rgba(90,184,160,0.2);}
-.od-tag.violet{background:var(--violet-lt);color:var(--violet);border:1px solid rgba(139,127,212,0.2);}
-.od-tag.coral{background:var(--coral-lt);color:var(--coral);border:1px solid rgba(212,112,90,0.2);}
-.od-tag.gold{background:var(--gold-lt);color:var(--gold);border:1px solid rgba(200,150,90,0.2);}
+/* One Day full inline */
+.oneday-card{border:1px solid var(--border);border-radius:20px;overflow:hidden;margin-bottom:1.2rem;background:var(--card)}
+.oneday-hero-img{width:100%;height:260px;object-fit:cover;object-position:center;display:block;opacity:0.75}
+.oneday-top{background:linear-gradient(135deg,rgba(90,184,160,0.07) 0%,rgba(139,127,212,0.07) 100%);padding:2.5rem 3rem 0;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:end;border-bottom:1px solid var(--border)}
+.od-eyebrow{font-family:'DM Mono',monospace;font-size:0.67rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--teal);margin-bottom:0.8rem;opacity:0.8}
+.od-title{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;margin-bottom:0.7rem;line-height:1.15;color:var(--ink)}
+.od-title em{font-style:italic;color:var(--teal)}
+.od-desc{font-size:0.88rem;color:var(--ink2);line-height:1.8;font-weight:300;margin-bottom:1.5rem}
+.od-tags{display:flex;flex-wrap:wrap;gap:0.4rem}
+.od-tag{font-size:0.67rem;font-weight:500;padding:0.24rem 0.72rem;border-radius:100px}
+.od-tag.teal{background:var(--teal-lt);color:var(--teal);border:1px solid rgba(90,184,160,0.2)}
+.od-tag.violet{background:var(--violet-lt);color:var(--violet);border:1px solid rgba(139,127,212,0.2)}
+.od-tag.coral{background:var(--coral-lt);color:var(--coral);border:1px solid rgba(212,112,90,0.2)}
+.od-tag.gold{background:var(--gold-lt);color:var(--gold);border:1px solid rgba(200,150,90,0.2)}
+.od-scenes{display:flex;flex-direction:column;gap:0.6rem;padding-bottom:2.5rem}
+.od-scene{background:rgba(255,255,255,0.03);border-radius:10px;padding:1rem 1.2rem;border:1px solid var(--border);transition:border-color 0.2s}
+.od-scene:hover{border-color:var(--teal);background:rgba(90,184,160,0.05)}
+.od-scene-name{font-size:0.82rem;font-weight:500;color:var(--ink);margin-bottom:0.25rem}
+.od-scene-desc{font-size:0.75rem;color:var(--ink3);font-weight:300;line-height:1.65}
+.oneday-insights{padding:1.5rem 3rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;border-bottom:1px solid var(--border)}
+.insight-card{background:var(--bg3);border-radius:10px;padding:1.2rem;border:1px solid var(--border)}
+.insight-icon{font-size:1.3rem;margin-bottom:0.5rem}
+.insight-title{font-size:0.82rem;font-weight:500;color:var(--ink);margin-bottom:0.35rem}
+.insight-text{font-size:0.77rem;color:var(--ink3);line-height:1.65;font-weight:300}
+.oneday-bottom{padding:1.5rem 3rem;display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.od-stat{text-align:center}
+.od-stat-n{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:var(--teal);line-height:1}
+.od-stat-l{font-size:0.72rem;color:var(--ink3);margin-top:0.3rem;font-weight:300}
 
-.od-scenes{display:flex;flex-direction:column;gap:0.6rem;padding-bottom:2.5rem;}
-.od-scene{
-  background:rgba(255,255,255,0.03);border-radius:10px;padding:0.9rem 1.1rem;
-  border:1px solid var(--border);transition:border-color 0.2s;
-}
-.od-scene:hover{border-color:var(--teal);background:rgba(90,184,160,0.05);}
-.od-scene-name{font-size:0.78rem;font-weight:500;color:var(--ink);margin-bottom:0.2rem;}
-.od-scene-desc{font-size:0.72rem;color:var(--ink3);font-weight:300;line-height:1.6;}
+/* small proj */
+.proj-row{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.proj-sm{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:2rem;transition:all 0.25s}
+.proj-sm:hover{border-color:var(--border2);background:var(--card);transform:translateY(-2px)}
+.psm-eyebrow{font-family:'DM Mono',monospace;font-size:0.64rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink3);margin-bottom:0.6rem}
+.psm-title{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:300;color:var(--ink);margin-bottom:0.7rem}
+.psm-desc{font-size:0.83rem;color:var(--ink3);line-height:1.75;font-weight:300;margin-bottom:1rem}
+.psm-tags{display:flex;flex-wrap:wrap;gap:0.35rem}
+.psm-tag{font-size:0.67rem;padding:0.22rem 0.62rem;border-radius:100px;background:rgba(255,255,255,0.04);color:var(--ink3);border:1px solid var(--border)}
 
-.oneday-insights{
-  padding:1.5rem 3rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;
-  border-bottom:1px solid var(--border);
-}
-.insight-card{background:var(--bg3);border-radius:10px;padding:1.1rem;border:1px solid var(--border);}
-.insight-icon{font-size:1.2rem;margin-bottom:0.5rem;}
-.insight-title{font-size:0.78rem;font-weight:500;color:var(--ink);margin-bottom:0.35rem;}
-.insight-text{font-size:0.73rem;color:var(--ink3);line-height:1.65;font-weight:300;}
-
-.oneday-bottom{
-  padding:1.5rem 3rem;display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;
-}
-.od-stat{text-align:center;}
-.od-stat-n{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--teal);line-height:1;}
-.od-stat-l{font-size:0.68rem;color:var(--ink3);margin-top:0.3rem;font-weight:300;}
-
-/* small proj cards */
-.proj-row{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;}
-.proj-sm{
-  background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);
-  padding:2rem;transition:all 0.25s;cursor:default;
-}
-.proj-sm:hover{border-color:var(--border2);background:var(--card);transform:translateY(-2px);}
-.psm-eyebrow{font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink3);margin-bottom:0.6rem;}
-.psm-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;color:var(--ink);margin-bottom:0.7rem;}
-.psm-desc{font-size:0.8rem;color:var(--ink3);line-height:1.72;font-weight:300;margin-bottom:1rem;}
-.psm-tags{display:flex;flex-wrap:wrap;gap:0.35rem;}
-.psm-tag{font-size:0.65rem;padding:0.2rem 0.6rem;border-radius:100px;background:rgba(255,255,255,0.04);color:var(--ink3);border:1px solid var(--border);}
-
-/* ── BEYOND RESEARCH — parallax gallery ── */
-#beyond{position:relative;z-index:1;}
-.beyond-intro{font-size:1rem;font-weight:300;color:var(--ink2);max-width:620px;line-height:1.9;margin-bottom:4rem;}
-.beyond-intro strong{color:var(--ink);font-weight:500;}
-
-/* parallax gallery */
-.para-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2.5rem;}
-.para-item{
-  border-radius:var(--radius);overflow:hidden;position:relative;cursor:pointer;
-  border:1px solid var(--border);
-}
-.para-item img{
-  width:100%;object-fit:cover;display:block;
-  transition:transform 0.5s ease;will-change:transform;
-}
-.para-item:hover img{transform:scale(1.06);}
-.para-item.h1 img{height:240px;}
-.para-item.h2 img{height:320px;}
-.para-item.hwide{grid-column:span 2;}
-.para-item.hwide img{height:240px;}
-.para-caption{
-  position:absolute;inset:0;
-  background:linear-gradient(transparent 40%,rgba(13,15,20,0.85));
-  display:flex;align-items:flex-end;padding:1rem;
-  opacity:0;transition:opacity 0.3s;
-}
-.para-item:hover .para-caption{opacity:1;}
-.para-caption span{font-size:0.75rem;color:rgba(255,255,255,0.85);font-weight:300;}
-
-/* mouse section */
-.mouse-section{
-  background:var(--gold-lt);border-radius:var(--radius);padding:2rem;
-  display:flex;align-items:center;gap:2rem;border:1px solid rgba(200,150,90,0.2);
-  margin-bottom:2.5rem;transition:border-color 0.2s;
-}
-.mouse-section:hover{border-color:rgba(200,150,90,0.4);}
-.mouse-emoji{font-size:3rem;animation:wobble 3s ease-in-out infinite;}
+/* ── BEYOND ── */
+#beyond{position:relative;z-index:1}
+.beyond-intro{font-size:1.05rem;font-weight:300;color:var(--ink2);max-width:640px;line-height:1.9;margin-bottom:4rem}
+.beyond-intro strong{color:var(--ink);font-weight:500}
+.para-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:0.9rem;margin-bottom:2.5rem}
+.para-item{border-radius:var(--r);overflow:hidden;position:relative;cursor:pointer;border:1px solid var(--border)}
+.para-item img{width:100%;object-fit:cover;display:block;transition:transform 0.5s ease;will-change:transform}
+.para-item:hover img{transform:scale(1.06)}
+.para-item.h1 img{height:240px}
+.para-item.h2 img{height:340px}
+.para-item.hwide{grid-column:span 2}
+.para-item.hwide img{height:240px}
+.para-caption{position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(13,15,20,0.88));display:flex;align-items:flex-end;padding:1rem;opacity:0;transition:opacity 0.3s}
+.para-item:hover .para-caption{opacity:1}
+.para-caption span{font-size:0.77rem;color:rgba(255,255,255,0.88);font-weight:300}
+.mouse-section{background:var(--gold-lt);border-radius:var(--r);padding:2rem;display:flex;align-items:center;gap:2rem;border:1px solid rgba(200,150,90,0.2);margin-bottom:2.5rem;transition:border-color 0.2s}
+.mouse-section:hover{border-color:rgba(200,150,90,0.45)}
+.mouse-emoji{font-size:3rem;animation:wobble 3s ease-in-out infinite}
 @keyframes wobble{0%,100%{transform:rotate(0deg)}25%{transform:rotate(-8deg)}75%{transform:rotate(8deg)}}
-.mouse-text h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;color:var(--gold);margin-bottom:0.4rem;}
-.mouse-text p{font-size:0.85rem;color:var(--ink2);font-weight:300;line-height:1.7;}
+.mouse-text h3{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:400;color:var(--gold);margin-bottom:0.4rem}
+.mouse-text p{font-size:0.88rem;color:var(--ink2);font-weight:300;line-height:1.75}
 
-/* hobby pills */
-.hobby-list{display:grid;grid-template-columns:repeat(8,1fr);gap:0.6rem;}
-.hobby-item{
-  display:flex;flex-direction:column;align-items:center;gap:0.45rem;
-  padding:1.1rem 0.5rem;background:var(--card);border-radius:12px;
-  border:1px solid var(--border);transition:all 0.2s;cursor:default;
-}
-.hobby-item:hover{background:var(--gold-lt);border-color:rgba(200,150,90,0.3);transform:translateY(-3px);}
-.hobby-item:hover .hobby-label{color:var(--gold);}
-.hobby-icon{font-size:1.5rem;}
-.hobby-label{font-size:0.68rem;font-weight:400;color:var(--ink3);}
+/* mouse photo */
+.mouse-with-photo{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center}
+.mouse-photo-frame{border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
+.mouse-photo-frame img{width:100%;height:220px;object-fit:cover;object-position:center;display:block}
+
+.hobby-list{display:grid;grid-template-columns:repeat(8,1fr);gap:0.6rem}
+.hobby-item{display:flex;flex-direction:column;align-items:center;gap:0.45rem;padding:1.2rem 0.5rem;background:var(--card);border-radius:12px;border:1px solid var(--border);transition:all 0.2s;cursor:default}
+.hobby-item:hover{background:var(--gold-lt);border-color:rgba(200,150,90,0.3);transform:translateY(-3px)}
+.hobby-item:hover .hobby-label{color:var(--gold)}
+.hobby-icon{font-size:1.6rem}
+.hobby-label{font-size:0.7rem;font-weight:400;color:var(--ink3)}
 
 /* ── LEADERSHIP ── */
-#leadership{background:var(--bg2);position:relative;z-index:1;}
-.lead-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
-.lead-card{
-  background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);
-  padding:1.8rem;transition:all 0.25s;
-}
-.lead-card:hover{border-color:var(--border2);background:var(--card);transform:translateY(-2px);}
-.lead-icon{font-size:1.4rem;margin-bottom:0.8rem;}
-.lead-name{font-size:0.9rem;font-weight:500;color:var(--ink);margin-bottom:0.2rem;}
-.lead-role{font-size:0.72rem;color:var(--gold);font-weight:400;margin-bottom:0.1rem;}
-.lead-period{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--ink3);margin-bottom:0.75rem;}
-.lead-desc{font-size:0.8rem;color:var(--ink3);line-height:1.72;font-weight:300;}
+#leadership{background:var(--bg2);position:relative;z-index:1}
+.lead-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.lead-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:1.8rem;transition:all 0.25s}
+.lead-card:hover{border-color:var(--border2);background:var(--card);transform:translateY(-2px)}
+.lead-icon{font-size:1.4rem;margin-bottom:0.8rem}
+.lead-name{font-size:0.94rem;font-weight:500;color:var(--ink);margin-bottom:0.2rem}
+.lead-role{font-size:0.74rem;color:var(--gold);font-weight:400;margin-bottom:0.1rem}
+.lead-period{font-family:'DM Mono',monospace;font-size:0.67rem;color:var(--ink3);margin-bottom:0.75rem}
+.lead-desc{font-size:0.83rem;color:var(--ink3);line-height:1.75;font-weight:300}
 
 /* ── AWARDS ── */
-#awards{position:relative;z-index:1;}
-.awards-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 3rem;}
-.award-row{
-  display:flex;align-items:flex-start;gap:1rem;
-  padding:1rem 0;border-bottom:1px solid var(--border);
-  transition:background 0.15s;
-}
-.award-yr{
-  font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:300;
-  background:rgba(200,150,90,0.08);color:var(--gold);
-  padding:0.18rem 0.55rem;border-radius:100px;white-space:nowrap;
-  margin-top:0.15rem;flex-shrink:0;border:1px solid rgba(200,150,90,0.2);
-}
-.award-name{font-size:0.84rem;font-weight:500;color:var(--ink);}
-.award-org{font-size:0.74rem;color:var(--ink3);font-weight:300;margin-top:0.12rem;}
+#awards{position:relative;z-index:1}
+.awards-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 3rem}
+.award-row{display:flex;align-items:flex-start;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--border);transition:background 0.15s}
+.award-yr{font-family:'DM Mono',monospace;font-size:0.67rem;font-weight:300;background:var(--gold-lt);color:var(--gold);padding:0.2rem 0.55rem;border-radius:100px;white-space:nowrap;margin-top:0.15rem;flex-shrink:0;border:1px solid rgba(200,150,90,0.2)}
+.award-name{font-size:0.88rem;font-weight:500;color:var(--ink)}
+.award-org{font-size:0.77rem;color:var(--ink3);font-weight:300;margin-top:0.12rem}
 
 /* ── CONTACT ── */
-#contact{background:var(--bg2);position:relative;z-index:1;}
-.contact-wrap{max-width:1100px;margin:0 auto;padding:7rem 5rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
-.contact-left h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,4vw,4.5rem);font-weight:300;color:var(--ink);line-height:1.05;margin-bottom:1rem;}
-.contact-left h2 em{font-style:italic;color:var(--gold);}
-.contact-left p{font-size:0.9rem;color:var(--ink2);line-height:1.8;font-weight:300;margin-bottom:2rem;}
-.clink{
-  display:flex;align-items:center;gap:0.8rem;text-decoration:none;
-  padding:0.9rem 1.2rem;background:var(--card);border-radius:10px;
-  border:1px solid var(--border);transition:all 0.2s;margin-bottom:0.6rem;
-}
-.clink:hover{background:var(--card2);border-color:var(--border2);transform:translateX(6px);}
-.clink-icon{font-size:1rem;flex-shrink:0;}
-.clink-text{font-size:0.85rem;color:var(--ink);font-weight:400;}
-.clink-sub{font-size:0.7rem;color:var(--ink3);margin-top:0.05rem;}
-.contact-right{}
-.contact-photo{border-radius:16px;overflow:hidden;margin-bottom:1.5rem;border:1px solid var(--border);}
-.contact-photo img{width:100%;height:300px;object-fit:cover;object-position:top;display:block;}
-.contact-quote{
-  font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;
-  color:var(--ink3);line-height:1.7;text-align:center;
-  padding:0 1rem;
-}
+#contact{background:var(--bg2);position:relative;z-index:1}
+.contact-wrap{max-width:1100px;margin:0 auto;padding:7rem 5rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.contact-left h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,4.5vw,5rem);font-weight:300;color:var(--ink);line-height:1.05;margin-bottom:1rem}
+.contact-left h2 em{font-style:italic;color:var(--gold)}
+.contact-left p{font-size:0.95rem;color:var(--ink2);line-height:1.82;font-weight:300;margin-bottom:2rem}
+.clink{display:flex;align-items:center;gap:0.8rem;text-decoration:none;padding:0.95rem 1.2rem;background:var(--card);border-radius:10px;border:1px solid var(--border);transition:all 0.2s;margin-bottom:0.6rem}
+.clink:hover{background:var(--card2);border-color:var(--border2);transform:translateX(6px)}
+.clink-icon{font-size:1.05rem;flex-shrink:0}
+.clink-text{font-size:0.88rem;color:var(--ink);font-weight:400}
+.clink-sub{font-size:0.72rem;color:var(--ink3);margin-top:0.05rem}
+.contact-photo{border-radius:16px;overflow:hidden;margin-bottom:1.5rem;border:1px solid var(--border)}
+.contact-photo img{width:100%;height:320px;object-fit:cover;object-position:top;display:block}
+.contact-quote{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-style:italic;color:var(--ink3);line-height:1.72;text-align:center;padding:0 1rem}
 
-footer{
-  background:var(--bg);border-top:1px solid var(--border);
-  text-align:center;padding:2rem;font-family:'DM Mono',monospace;
-  font-size:0.68rem;color:var(--ink3);letter-spacing:0.08em;
-}
-footer a{color:var(--gold);text-decoration:none;}
-footer a:hover{color:var(--ink2);}
+footer{background:var(--bg);border-top:1px solid var(--border);text-align:center;padding:2rem;font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--ink3);letter-spacing:0.08em}
+footer a{color:var(--gold);text-decoration:none}
+footer a:hover{color:var(--ink2)}
 
 /* ── RESPONSIVE ── */
 @media(max-width:1024px){
@@ -519,15 +283,12 @@ footer a:hover{color:var(--ink2);}
   #hero{grid-template-columns:1fr}
   .hero-right{height:50vh}
   .hero-left{padding:4rem 3rem}
-  .about-grid{grid-template-columns:1fr;gap:3rem}
-  .proj-hero{grid-template-columns:1fr}
-  .oneday-top{grid-template-columns:1fr}
-  .oneday-insights{grid-template-columns:1fr 1fr}
-  .oneday-bottom{grid-template-columns:repeat(2,1fr)}
+  .about-grid,.proj-hero,.oneday-top{grid-template-columns:1fr}
   .contact-wrap{grid-template-columns:1fr;gap:3rem;padding:5rem 3rem}
   .contact-right{display:none}
   .res-grid{grid-template-columns:1fr}
   .hobby-list{grid-template-columns:repeat(4,1fr)}
+  .mouse-with-photo{grid-template-columns:1fr}
 }
 @media(max-width:768px){
   .wrap{padding:4rem 1.5rem}
@@ -539,13 +300,12 @@ footer a:hover{color:var(--ink2);}
   .proj-hero{padding:1.8rem}
   .proj-row,.lead-grid,.awards-grid,.para-gallery{grid-template-columns:1fr}
   .para-item.hwide{grid-column:span 1}
-  .oneday-top{padding:2rem 1.5rem 0}
   .oneday-insights,.oneday-bottom{padding:1.2rem 1.5rem}
+  .oneday-top{padding:2rem 1.5rem 0}
   .oneday-insights{grid-template-columns:1fr}
   .oneday-bottom{grid-template-columns:repeat(2,1fr)}
   .hobby-list{grid-template-columns:repeat(4,1fr)}
   .contact-wrap{padding:4rem 1.5rem}
-  .ph-title{font-size:1.8rem}
 }
 </style>
 </head>
@@ -554,7 +314,6 @@ footer a:hover{color:var(--ink2);}
 <div id="cursor-glow"></div>
 <canvas id="neural-canvas"></canvas>
 
-<!-- NAV -->
 <nav id="navbar">
   <a class="nav-logo" href="#hero">Xin <em>Ai</em></a>
   <div class="nav-links">
@@ -564,7 +323,7 @@ footer a:hover{color:var(--ink2);}
     <a href="#beyond">Beyond</a>
     <a href="#leadership">Leadership</a>
     <a href="#contact">Contact</a>
-    <a href="Xin_Ai_Resume.pdf" class="nav-cv" download target="_blank">CV ↓</a>
+    <a href="Xin_Ai_Resume.pdf" class="nav-cv" target="_blank">CV ↓</a>
   </div>
   <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
@@ -575,24 +334,22 @@ footer a:hover{color:var(--ink2);}
   <a href="#beyond" onclick="closeMobile()">Beyond Research</a>
   <a href="#leadership" onclick="closeMobile()">Leadership</a>
   <a href="#contact" onclick="closeMobile()">Contact</a>
-  <a href="Xin_Ai_Resume.pdf" download>Download CV</a>
+  <a href="Xin_Ai_Resume.pdf" target="_blank">View CV</a>
 </div>
 
 <!-- HERO -->
 <section id="hero">
   <div class="hero-left">
     <div class="hero-avatar-row fi">
-      <div class="hero-avatar"><img src="photos/profile_main.jpg" alt="Xin Ai"></div>
-      <div class="hero-avatar-text">
+      <div class="hero-avatar"><img src="photos/formal.jpg" alt="Xin Ai"></div>
+      <div>
         <div class="hero-avatar-name">Xin Ai</div>
         <div class="hero-avatar-sub"><span class="status-dot"></span>Borner Lab, USC · Class of 2026</div>
       </div>
     </div>
     <div class="hero-eyebrow fi">USC · Cognitive Science</div>
     <h1 class="hero-name fi d1">Xin<br><em>Ai</em></h1>
-    <div class="hero-desc fi d2" id="hero-desc">
-      <span id="typewriter-text"></span><span class="cursor-blink"></span>
-    </div>
+    <div class="hero-desc fi d2"><span id="typewriter-text"></span><span class="cursor-blink"></span></div>
     <div class="hero-chips fi d3">
       <span class="chip gold">Neuroscience</span>
       <span class="chip teal">AI × Healthcare</span>
@@ -602,20 +359,18 @@ footer a:hover{color:var(--ink2);}
     </div>
     <div class="hero-btns fi d4">
       <a href="#research" class="btn btn-gold">My Research</a>
-      <a href="Xin_Ai_Resume.pdf" class="btn btn-outline" download target="_blank">Download CV</a>
+      <a href="Xin_Ai_Resume.pdf" class="btn btn-outline" target="_blank">View CV</a>
     </div>
   </div>
   <div class="hero-right">
-    <div class="hero-photo-main">
-      <img src="photos/profile_main.jpg" alt="Xin Ai">
-    </div>
+    <div class="hero-photo-main"><img src="photos/formal.jpg" alt="Xin Ai"></div>
     <div class="hero-stat-bar">
       <div class="hero-stat"><span class="hs-num">4.0</span><span class="hs-lbl">GPA · USC</span></div>
       <div class="hero-stat"><span class="hs-num">300+</span><span class="hs-lbl">Families surveyed</span></div>
     </div>
     <div class="hero-photo-mini">
       <div class="mini-photo"><img src="photos/piano_stage.jpg" alt="Piano" style="object-position:center 20%"></div>
-      <div class="mini-photo"><img src="photos/desert.jpg" alt="Desert" style="object-position:top"></div>
+      <div class="mini-photo"><img src="photos/paragliding.jpg" alt="Paragliding"></div>
       <div class="mini-photo"><img src="photos/graduation.jpg" alt="Graduation" style="object-position:top"></div>
     </div>
   </div>
@@ -633,9 +388,9 @@ footer a:hover{color:var(--ink2);}
     <div class="about-grid">
       <div class="about-text reveal">
         <p>I investigate questions at the intersection of <strong>neuroscience, AI, and human-centered care</strong>. At the Borner Lab, USC, I study the neural circuits controlling feeding behavior — work with implications for eating disorders and cancer-related anorexia.</p>
-        <p>Before that: exosome-based therapies for Alzheimer's, social stigma in psychiatric illness, music therapy for autistic children. The thread connecting all of it — I'm drawn to how the brain shapes, and is shaped by, our emotional and social worlds.</p>
+        <p>Before that: exosome-based therapies for Alzheimer's, social stigma in psychiatric illness, music therapy for autistic children. A thread connects all of it — I'm drawn to how the brain shapes, and is shaped by, our emotional and social worlds.</p>
         <p>I founded <strong>CogniBuddy</strong>, an AI home care platform for Alzheimer's patients, piloted in Nanjing in 2025. I also co-designed <strong>One Day</strong>, a board game helping Alzheimer's patients reconnect with family through play and memory.</p>
-        <p>I grew up between Shanghai and the world. I speak Mandarin, English, and Russian. I play piano on stage and compose at midnight. I build wool felt mice by hand. I think the best ideas come from sitting with people and really listening.</p>
+        <p>I grew up between Shanghai and the world. I speak Mandarin, English, and Russian. I play piano on stage, go paragliding, compose at midnight, and build tiny wool felt mice by hand. I think the best ideas come from sitting with people and really listening.</p>
       </div>
       <div class="reveal">
         <div class="info-block">
@@ -673,7 +428,7 @@ footer a:hover{color:var(--ink2);}
             <span class="tag teal">Russian</span>
           </div>
         </div>
-        <a href="Xin_Ai_Resume.pdf" class="btn btn-outline" style="font-size:0.78rem;padding:0.6rem 1.3rem;" download target="_blank">Download Full CV ↓</a>
+        <a href="Xin_Ai_Resume.pdf" class="btn btn-outline" style="font-size:0.82rem;padding:0.65rem 1.4rem;" target="_blank">View Full CV ↓</a>
       </div>
     </div>
   </div>
@@ -681,76 +436,63 @@ footer a:hover{color:var(--ink2);}
 
 <hr class="div">
 
-<!-- RESEARCH — flip cards -->
+<!-- RESEARCH -->
 <section id="research">
   <div class="wrap">
     <div class="reveal">
       <div class="eyebrow">Research Experience</div>
       <h2 class="section-h">Questions I'm <em>chasing</em></h2>
-      <p style="font-size:0.78rem;color:var(--ink3);margin-top:-2rem;margin-bottom:3rem;font-weight:300;">Hover a card to see details →</p>
+      <p style="font-size:0.82rem;color:var(--ink3);margin-top:-2.5rem;margin-bottom:3rem;font-weight:300;">Hover a card to see details →</p>
     </div>
     <div class="res-grid reveal">
-
-      <div class="res-flip">
-        <div class="res-flip-inner">
-          <div class="res-face">
-            <div class="res-badge current"><span style="width:5px;height:5px;border-radius:50%;background:#5cb85c;display:inline-block"></span> Current</div>
-            <div class="res-title">Neural Mechanisms of Feeding Behavior</div>
-            <div class="res-org">Borner Lab · University of Southern California</div>
-            <div class="res-hint">↻ hover for details</div>
-          </div>
-          <div class="res-face res-face-back">
-            <div class="res-back-desc">Investigating neural circuits controlling feeding behavior in rodent models. Literature reviews on appetite loss, nausea, and cancer-related weight loss. Facilitating behavioral observation, post-surgical monitoring, data collection, and lab presentations.</div>
-            <div class="res-period">Aug 2025 – Present</div>
-          </div>
+      <div class="res-flip"><div class="res-flip-inner">
+        <div class="res-face">
+          <div class="res-badge current"><span style="width:5px;height:5px;border-radius:50%;background:#5cb85c;display:inline-block"></span> Current</div>
+          <div class="res-title">Neural Mechanisms of Feeding Behavior</div>
+          <div class="res-org">Borner Lab · University of Southern California</div>
+          <div class="res-hint">↻ hover for details</div>
         </div>
-      </div>
-
-      <div class="res-flip">
-        <div class="res-flip-inner">
-          <div class="res-face">
-            <div class="res-badge past">2024–25</div>
-            <div class="res-title">Exosomes as Alzheimer's Disease Treatment</div>
-            <div class="res-org">ExoID / Zhejiang University Joint Lab</div>
-            <div class="res-hint">↻ hover for details</div>
-          </div>
-          <div class="res-face res-face-back">
-            <div class="res-back-desc">Examined exosome-based approaches for dementia treatment. Trained team on extracellular vesicle isolation and purification. Cleaned and organized 2,000+ data entries for downstream analysis.</div>
-            <div class="res-period">Aug 2024 – Jul 2025</div>
-          </div>
+        <div class="res-face res-face-back">
+          <div class="res-back-desc">Investigating neural circuits controlling feeding behavior in rodent models. Literature reviews on appetite loss, nausea, and cancer-related weight loss. Facilitating behavioral observation, post-surgical monitoring, data collection, and lab presentations.</div>
+          <div class="res-period">Aug 2025 – Present</div>
         </div>
-      </div>
-
-      <div class="res-flip">
-        <div class="res-flip-inner">
-          <div class="res-face">
-            <div class="res-badge past">2024</div>
-            <div class="res-title">Stigma &amp; Perception of Psychiatric Illness</div>
-            <div class="res-org">Student Researcher</div>
-            <div class="res-hint">↻ hover for details</div>
-          </div>
-          <div class="res-face res-face-back">
-            <div class="res-back-desc">Examined how societal stigma shapes the experience of individuals with psychiatric diagnoses. Reviewed 50+ academic papers. Explored the conceptual boundary between character and diagnosis across frameworks.</div>
-            <div class="res-period">Jul – Aug 2024</div>
-          </div>
+      </div></div>
+      <div class="res-flip"><div class="res-flip-inner">
+        <div class="res-face">
+          <div class="res-badge past">2024–25</div>
+          <div class="res-title">Exosomes as Alzheimer's Disease Treatment</div>
+          <div class="res-org">ExoID / Zhejiang University Joint Lab</div>
+          <div class="res-hint">↻ hover for details</div>
         </div>
-      </div>
-
-      <div class="res-flip">
-        <div class="res-flip-inner">
-          <div class="res-face">
-            <div class="res-badge past">2023</div>
-            <div class="res-title">Music Therapy &amp; Anxiety Diagnostics</div>
-            <div class="res-org">Pediatric Wellness Center, Zhongshan Hospital</div>
-            <div class="res-hint">↻ hover for details</div>
-          </div>
-          <div class="res-face res-face-back">
-            <div class="res-back-desc">Supported music therapy for autistic adolescents (ages 6–12). Co-authored paper improving SAS diagnostic reliability (publication pending). Coordinated 200+ volunteers; applied STATA for data cleaning and analysis.</div>
-            <div class="res-period">Apr – Jul 2023</div>
-          </div>
+        <div class="res-face res-face-back">
+          <div class="res-back-desc">Examined exosome-based approaches for dementia treatment. Trained team on extracellular vesicle isolation and purification. Cleaned and organized 2,000+ data entries for downstream analysis.</div>
+          <div class="res-period">Aug 2024 – Jul 2025</div>
         </div>
-      </div>
-
+      </div></div>
+      <div class="res-flip"><div class="res-flip-inner">
+        <div class="res-face">
+          <div class="res-badge past">2024</div>
+          <div class="res-title">Stigma &amp; Perception of Psychiatric Illness</div>
+          <div class="res-org">Student Researcher</div>
+          <div class="res-hint">↻ hover for details</div>
+        </div>
+        <div class="res-face res-face-back">
+          <div class="res-back-desc">Examined how societal stigma shapes the experience of individuals with psychiatric diagnoses. Reviewed 50+ academic papers. Explored the conceptual boundary between character and diagnosis across frameworks.</div>
+          <div class="res-period">Jul – Aug 2024</div>
+        </div>
+      </div></div>
+      <div class="res-flip"><div class="res-flip-inner">
+        <div class="res-face">
+          <div class="res-badge past">2023</div>
+          <div class="res-title">Music Therapy &amp; Anxiety Diagnostics</div>
+          <div class="res-org">Pediatric Wellness Center, Zhongshan Hospital</div>
+          <div class="res-hint">↻ hover for details</div>
+        </div>
+        <div class="res-face res-face-back">
+          <div class="res-back-desc">Supported music therapy for autistic adolescents (ages 6–12). Co-authored paper improving SAS diagnostic reliability (publication pending). Coordinated 200+ volunteers; applied STATA for data cleaning and analysis.</div>
+          <div class="res-period">Apr – Jul 2023</div>
+        </div>
+      </div></div>
     </div>
   </div>
 </section>
@@ -769,7 +511,7 @@ footer a:hover{color:var(--ink2);}
       <div>
         <div class="ph-eyebrow">✦ Featured · Jun 2025 – Present</div>
         <div class="ph-title"><em>CogniBuddy</em></div>
-        <p class="ph-desc">An AI-enabled home care system integrating wearable biosensors, geofencing, adaptive lighting, and a caregiver decision-support dashboard. Piloted with a nursing home in Nanjing; designed around dignity-centered, minimal-surveillance principles.</p>
+        <p class="ph-desc">An AI-enabled home care system integrating wearable biosensors, geofencing, adaptive lighting, and a caregiver decision-support dashboard. Piloted with a nursing home in Nanjing; designed around dignity-centered, minimal-surveillance principles with consent-based data protocols.</p>
         <div class="ph-tags">
           <span class="ph-tag">AI &amp; Machine Learning</span>
           <span class="ph-tag">Wearable Biosensors</span>
@@ -780,7 +522,7 @@ footer a:hover{color:var(--ink2);}
       </div>
       <div class="ph-visual">
         <div class="ph-logo">CB</div>
-        <div style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--ink3);margin-bottom:1rem;">cognibuddy.tech</div>
+        <div style="font-family:'DM Mono',monospace;font-size:0.67rem;color:var(--ink3);margin-bottom:1rem">cognibuddy.tech</div>
         <div class="ph-stat-grid">
           <div class="ph-stat"><div class="ph-stat-n">2025</div><div class="ph-stat-l">Pilot in Nanjing nursing home</div></div>
           <div class="ph-stat"><div class="ph-stat-n">0</div><div class="ph-stat-l">Surveillance without consent</div></div>
@@ -790,12 +532,14 @@ footer a:hover{color:var(--ink2);}
       </div>
     </div>
 
+    <!-- One Day with real image -->
     <div class="oneday-card reveal">
+      <img class="oneday-hero-img" src="photos/lego.jpg" alt="One Day board game" style="object-position:center">
       <div class="oneday-top">
-        <div style="padding-bottom:2.5rem;">
+        <div style="padding-bottom:2.5rem">
           <div class="od-eyebrow">🎲 Longevity Design Challenge · Jun – Dec 2024</div>
           <div class="od-title">One Day<br><em>A Board Game for Alzheimer's</em></div>
-          <p class="od-desc">A family cognitive training game built around familiar home scenes where patients and families collaborate through memory, pattern recognition, and storytelling. Pipe-shaped pieces symbolize connection; Memory Recovery Cards prompt sharing of real family photos.</p>
+          <p class="od-desc">A family cognitive training game built around familiar home scenes — kitchen, bedroom, living room — where patients and families collaborate through memory, pattern recognition, and storytelling. Pipe-shaped pieces symbolize family connection; Memory Recovery Cards prompt sharing of real family photos.</p>
           <div class="od-tags">
             <span class="od-tag teal">Non-Drug Therapy</span>
             <span class="od-tag violet">Longevity Design</span>
@@ -814,30 +558,18 @@ footer a:hover{color:var(--ink2);}
           </div>
           <div class="od-scene">
             <div class="od-scene-name">🛋️ Living Room Scene</div>
-            <div class="od-scene-desc"><strong style="color:var(--teal)">Easy:</strong> Name colors on carpet-pattern cards. <strong style="color:var(--coral)">Hard:</strong> Flip and match two cards — if patterns match, earn a puzzle piece. Trains short-term memory.</div>
+            <div class="od-scene-desc"><strong style="color:var(--teal)">Easy:</strong> Name colors on carpet-pattern cards. <strong style="color:var(--coral)">Hard:</strong> Flip and match two cards — matching patterns earn a puzzle piece. Trains short-term memory.</div>
           </div>
-          <div class="od-scene" style="border-color:rgba(200,150,90,0.2);background:rgba(200,150,90,0.04);">
-            <div class="od-scene-name" style="color:var(--gold);">📷 Memory Recovery Cards</div>
+          <div class="od-scene" style="border-color:rgba(200,150,90,0.2);background:rgba(200,150,90,0.04)">
+            <div class="od-scene-name" style="color:var(--gold)">📷 Memory Recovery Cards</div>
             <div class="od-scene-desc">Families insert their own photos. Open-ended prompts help patients and families share stories and rebuild memories together.</div>
           </div>
         </div>
       </div>
       <div class="oneday-insights">
-        <div class="insight-card">
-          <div class="insight-icon">🏆</div>
-          <div class="insight-title">Positive Emotional Feedback</div>
-          <div class="insight-text">Each completed task earns a puzzle piece. Patients feel achievement, boosting motivation to engage.</div>
-        </div>
-        <div class="insight-card">
-          <div class="insight-icon">🏠</div>
-          <div class="insight-title">Real-Life Scenarios</div>
-          <div class="insight-text">Tasks mirror everyday moments — cooking, sorting, remembering — grounded in familiar environments.</div>
-        </div>
-        <div class="insight-card">
-          <div class="insight-icon">🎯</div>
-          <div class="insight-title">Improving Attention</div>
-          <div class="insight-text">Flipping, remembering, and matching cards helps patients improve focus through structured play.</div>
-        </div>
+        <div class="insight-card"><div class="insight-icon">🏆</div><div class="insight-title">Positive Emotional Feedback</div><div class="insight-text">Each completed task earns a puzzle piece. Patients feel achievement, boosting motivation to engage with family.</div></div>
+        <div class="insight-card"><div class="insight-icon">🏠</div><div class="insight-title">Real-Life Scenarios</div><div class="insight-text">Tasks mirror everyday moments — cooking, sorting, remembering — grounded in familiar home environments.</div></div>
+        <div class="insight-card"><div class="insight-icon">🎯</div><div class="insight-title">Improving Attention</div><div class="insight-text">Flipping, remembering, and matching cards helps patients improve focus through structured, joyful play.</div></div>
       </div>
       <div class="oneday-bottom">
         <div class="od-stat"><div class="od-stat-n">300+</div><div class="od-stat-l">Families visited in user research</div></div>
@@ -857,7 +589,7 @@ footer a:hover{color:var(--ink2);}
       <div class="proj-sm">
         <div class="psm-eyebrow">Global Health</div>
         <div class="psm-title">Maternal Mortality Research — Kenya</div>
-        <p class="psm-desc">With UN South South × Xianju Pharma, investigated maternal mortality with postpartum hemorrhage as lead cause. Explored feasibility of a 2-hour management model for local access.</p>
+        <p class="psm-desc">With UN South South × Xianju Pharma, investigated maternal mortality with postpartum hemorrhage as lead cause. Explored feasibility of a 2-hour management model to improve local access.</p>
         <div class="psm-tags"><span class="psm-tag">UN South South</span><span class="psm-tag">Global Health</span><span class="psm-tag">Maternal Care</span></div>
       </div>
     </div>
@@ -873,20 +605,20 @@ footer a:hover{color:var(--ink2);}
       <div class="eyebrow">Beyond Research</div>
       <h2 class="section-h">A life <em>fully lived</em></h2>
     </div>
-    <p class="beyond-intro reveal">I believe curiosity doesn't stop at the lab door. I play <strong>piano on stage</strong> and compose at midnight. I chase <strong>good light with a film camera</strong>. I roam <strong>museums and deserts</strong> with equal excitement. And I build tiny <strong>wool felt mice</strong> by hand — because some things just need to exist in the world.</p>
+    <p class="beyond-intro reveal">I believe curiosity doesn't stop at the lab door. I play <strong>piano on stage</strong> and compose at midnight. I go <strong>paragliding</strong> and ski down mountains. I chase <strong>good light with a film camera</strong>. I roam <strong>museums and deserts</strong> with equal excitement. And I build tiny <strong>wool felt mice</strong> by hand — because some things just need to exist in the world.</p>
 
     <div class="para-gallery reveal">
       <div class="para-item h2">
         <img src="photos/keyboard_perf.jpg" alt="Keyboard performance">
-        <div class="para-caption"><span>🎹 Original compositions at NEBS annual gala, 2023</span></div>
+        <div class="para-caption"><span>🎹 Original compositions at NEBS annual gala</span></div>
+      </div>
+      <div class="para-item h1">
+        <img src="photos/paragliding.jpg" alt="Paragliding" style="object-position:center">
+        <div class="para-caption"><span>🪂 Paragliding — the sky is not the limit</span></div>
       </div>
       <div class="para-item h1">
         <img src="photos/desert.jpg" alt="Desert" style="object-position:top">
         <div class="para-caption"><span>🌅 Arms open in the Arabian desert</span></div>
-      </div>
-      <div class="para-item h1">
-        <img src="photos/museum.jpg" alt="Museum">
-        <div class="para-caption"><span>🏛️ Exploring exhibitions — a weekend ritual</span></div>
       </div>
       <div class="para-item hwide">
         <img src="photos/band.jpg" alt="Band performances" style="object-position:center 30%">
@@ -897,32 +629,41 @@ footer a:hover{color:var(--ink2);}
         <div class="para-caption"><span>🌿 Summer in the mountains</span></div>
       </div>
       <div class="para-item h1">
-        <img src="photos/craft.jpg" alt="Bead art">
-        <div class="para-caption"><span>🎨 Handmade perler bead art</span></div>
+        <img src="photos/museum.jpg" alt="Museum">
+        <div class="para-caption"><span>🏛️ Exploring exhibitions — a weekend ritual</span></div>
       </div>
       <div class="para-item h1">
-        <img src="photos/lego.jpg" alt="Rilakkuma LEGO">
-        <div class="para-caption"><span>🐻 Rilakkuma LEGO build</span></div>
+        <img src="photos/craft.jpg" alt="Bead art">
+        <div class="para-caption"><span>🎨 Handmade perler bead art</span></div>
       </div>
     </div>
 
     <div class="mouse-section reveal">
-      <div class="mouse-emoji">🐭</div>
-      <div class="mouse-text">
-        <h3>About the mice</h3>
-        <p>I have a soft spot for mice — the tiny wool felt ones I make by hand. Each one takes hours and a lot of patience. It's meditative in the best way. <em>"The best scientists I know also make things with their hands."</em></p>
+      <div class="mouse-with-photo">
+        <div>
+          <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem">
+            <div class="mouse-emoji">🐭</div>
+            <div class="mouse-text">
+              <h3>About the mice</h3>
+              <p>I have a soft spot for mice — the tiny wool felt ones I make by hand. Each one takes hours of patient needlework. It's meditative in the best way. <em>"The best scientists I know also make things with their hands."</em></p>
+            </div>
+          </div>
+        </div>
+        <div class="mouse-photo-frame">
+          <img src="photos/mouse_felting.jpg" alt="Wool felt mouse creation">
+        </div>
       </div>
     </div>
 
     <div class="hobby-list reveal">
       <div class="hobby-item"><div class="hobby-icon">🎹</div><div class="hobby-label">Piano</div></div>
       <div class="hobby-item"><div class="hobby-icon">🎤</div><div class="hobby-label">Singing</div></div>
+      <div class="hobby-item"><div class="hobby-icon">🪂</div><div class="hobby-label">Paragliding</div></div>
       <div class="hobby-item"><div class="hobby-icon">🎿</div><div class="hobby-label">Skiing</div></div>
       <div class="hobby-item"><div class="hobby-icon">📷</div><div class="hobby-label">Photography</div></div>
       <div class="hobby-item"><div class="hobby-icon">🧶</div><div class="hobby-label">Wool Felting</div></div>
       <div class="hobby-item"><div class="hobby-icon">✈️</div><div class="hobby-label">Travel</div></div>
       <div class="hobby-item"><div class="hobby-icon">🏛️</div><div class="hobby-label">Museums</div></div>
-      <div class="hobby-item"><div class="hobby-icon">🎨</div><div class="hobby-label">Crafts</div></div>
     </div>
   </div>
 </section>
@@ -937,34 +678,10 @@ footer a:hover{color:var(--ink2);}
       <h2 class="section-h">Beyond <em>the lab</em></h2>
     </div>
     <div class="lead-grid">
-      <div class="lead-card reveal">
-        <div class="lead-icon">🎵</div>
-        <div class="lead-name">Post-War Children's Music Therapy Initiative</div>
-        <div class="lead-role">Organizer, Initiator &amp; Facilitator</div>
-        <div class="lead-period">Winter 2023, 2024, 2025 · Belogorsk, Russia</div>
-        <div class="lead-desc">Organized music therapy programs for 120+ Russian children under 15. Designed sessions using Orff techniques and adapted Russian songs to encourage emotional expression and musical development.</div>
-      </div>
-      <div class="lead-card reveal">
-        <div class="lead-icon">🧠</div>
-        <div class="lead-name">NEBS Psychology Peer Support Network</div>
-        <div class="lead-role">Co-Founder &amp; Vice Leader</div>
-        <div class="lead-period">Mar 2023 – Jun 2025</div>
-        <div class="lead-desc">Co-founded a non-hierarchical peer support network organized around Tarot card themes. Hosted three major events; managed WeChat account averaging 200 reads per post promoting mental health awareness.</div>
-      </div>
-      <div class="lead-card reveal">
-        <div class="lead-icon">🎪</div>
-        <div class="lead-name">NEBS Student Union</div>
-        <div class="lead-role">Member → VP Academic → Head of Organization Dept.</div>
-        <div class="lead-period">Sep 2021 – Jul 2024</div>
-        <div class="lead-desc">Led campus events for ~400 participants. Introduced live role-playing games and puzzles into the masquerade that received widespread positive feedback.</div>
-      </div>
-      <div class="lead-card reveal">
-        <div class="lead-icon">🌍</div>
-        <div class="lead-name">UN South South × Xianju Pharma</div>
-        <div class="lead-role">Volunteer Programme Coordinator</div>
-        <div class="lead-period">Aug 2024 – Aug 2025</div>
-        <div class="lead-desc">Investigated maternal mortality in Kenya with postpartum hemorrhage as lead cause. Explored feasibility of a 2-hour management model to improve access for local women.</div>
-      </div>
+      <div class="lead-card reveal"><div class="lead-icon">🎵</div><div class="lead-name">Post-War Children's Music Therapy Initiative</div><div class="lead-role">Organizer, Initiator &amp; Facilitator</div><div class="lead-period">Winter 2023, 2024, 2025 · Belogorsk, Russia</div><div class="lead-desc">Organized music therapy programs for 120+ Russian children under 15. Designed sessions using Orff techniques and adapted Russian songs to encourage emotional expression and musical development.</div></div>
+      <div class="lead-card reveal"><div class="lead-icon">🧠</div><div class="lead-name">NEBS Psychology Peer Support Network</div><div class="lead-role">Co-Founder &amp; Vice Leader</div><div class="lead-period">Mar 2023 – Jun 2025</div><div class="lead-desc">Co-founded a non-hierarchical peer support network organized around Tarot card themes. Hosted three major events; managed WeChat account averaging 200 reads per post promoting mental health awareness.</div></div>
+      <div class="lead-card reveal"><div class="lead-icon">🎪</div><div class="lead-name">NEBS Student Union</div><div class="lead-role">Member → VP Academic → Head of Organization Dept.</div><div class="lead-period">Sep 2021 – Jul 2024</div><div class="lead-desc">Led campus events for ~400 participants. Introduced live role-playing games and puzzles into the masquerade that received widespread positive feedback.</div></div>
+      <div class="lead-card reveal"><div class="lead-icon">🌍</div><div class="lead-name">UN South South × Xianju Pharma</div><div class="lead-role">Volunteer Programme Coordinator</div><div class="lead-period">Aug 2024 – Aug 2025</div><div class="lead-desc">Investigated maternal mortality in Kenya with postpartum hemorrhage as lead cause. Explored feasibility of a 2-hour management model to improve access for local women.</div></div>
     </div>
   </div>
 </section>
@@ -999,22 +716,10 @@ footer a:hover{color:var(--ink2);}
     <div class="contact-left reveal">
       <h2>Let's<br><em>connect</em></h2>
       <p>Open to research collaborations, lab opportunities, and conversations about neuroscience, AI care design, or music. Whether you're a researcher, professor, or just curious — reach out.</p>
-      <a href="mailto:xinai@usc.edu" class="clink">
-        <span class="clink-icon">✉</span>
-        <div><div class="clink-text">xinai@usc.edu</div><div class="clink-sub">Best way to reach me</div></div>
-      </a>
-      <a href="https://www.linkedin.com/in/xin-ai-b43a57381" class="clink" target="_blank">
-        <span class="clink-icon">🔗</span>
-        <div><div class="clink-text">LinkedIn</div><div class="clink-sub">linkedin.com/in/xin-ai-b43a57381</div></div>
-      </a>
-      <a href="http://cognibuddy.tech/" class="clink" target="_blank">
-        <span class="clink-icon">🧠</span>
-        <div><div class="clink-text">CogniBuddy</div><div class="clink-sub">cognibuddy.tech</div></div>
-      </a>
-      <a href="Xin_Ai_Resume.pdf" class="clink" download target="_blank">
-        <span class="clink-icon">↓</span>
-        <div><div class="clink-text">Download CV</div><div class="clink-sub">Full resume PDF</div></div>
-      </a>
+      <a href="mailto:xinai@usc.edu" class="clink"><span class="clink-icon">✉</span><div><div class="clink-text">xinai@usc.edu</div><div class="clink-sub">Best way to reach me</div></div></a>
+      <a href="https://www.linkedin.com/in/xin-ai-b43a57381" class="clink" target="_blank"><span class="clink-icon">🔗</span><div><div class="clink-text">LinkedIn</div><div class="clink-sub">linkedin.com/in/xin-ai-b43a57381</div></div></a>
+      <a href="http://cognibuddy.tech/" class="clink" target="_blank"><span class="clink-icon">🧠</span><div><div class="clink-text">CogniBuddy</div><div class="clink-sub">cognibuddy.tech</div></div></a>
+      <a href="Xin_Ai_Resume.pdf" class="clink" target="_blank"><span class="clink-icon">↓</span><div><div class="clink-text">View / Download CV</div><div class="clink-sub">Opens in new tab</div></div></a>
     </div>
     <div class="contact-right reveal">
       <div class="contact-photo"><img src="photos/piano_stage.jpg" alt="Xin Ai at piano" style="object-position:center 25%"></div>
@@ -1026,152 +731,69 @@ footer a:hover{color:var(--ink2);}
 <footer>© 2025 Xin Ai &nbsp;·&nbsp; <a href="mailto:xinai@usc.edu">xinai@usc.edu</a> &nbsp;·&nbsp; <a href="http://cognibuddy.tech/" target="_blank">cognibuddy.tech</a></footer>
 
 <script>
-// ── Nav ──
-window.addEventListener('scroll',()=>{
-  document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>20);
-});
-const ham=document.getElementById('hamburger');
-const mob=document.getElementById('mobileMenu');
+window.addEventListener('scroll',()=>document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>20));
+const ham=document.getElementById('hamburger'),mob=document.getElementById('mobileMenu');
 ham.addEventListener('click',()=>mob.classList.toggle('open'));
 function closeMobile(){mob.classList.remove('open')}
+const revObs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:0.07});
+document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
 
-// ── Scroll reveal ──
-const revealObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
-},{threshold:0.07});
-document.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
-
-// ── Cursor glow ──
+// cursor glow
 const glow=document.getElementById('cursor-glow');
-let mx=window.innerWidth/2,my=window.innerHeight/2;
-let glowX=mx,glowY=my;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
-(function animGlow(){
-  glowX+=(mx-glowX)*0.1;
-  glowY+=(my-glowY)*0.1;
-  glow.style.left=glowX+'px';
-  glow.style.top=glowY+'px';
-  requestAnimationFrame(animGlow);
-})();
+let mx=window.innerWidth/2,my=window.innerHeight/2,gx=mx,gy=my;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
+(function animG(){gx+=(mx-gx)*0.1;gy+=(my-gy)*0.1;glow.style.left=gx+'px';glow.style.top=gy+'px';requestAnimationFrame(animG)})();
 
-// ── Typewriter ──
+// typewriter
 const phrases=[
   'I investigate <strong>neural circuits and behavior</strong>.',
   'I build <strong>AI care systems</strong> for Alzheimer\'s patients.',
   'I compose music that <strong>no algorithm asked for</strong>.',
+  'I paraglide, ski, and make <strong>tiny wool felt mice</strong>.',
   'I believe science and <strong>empathy are the same thing</strong>.'
 ];
-let pIdx=0,cIdx=0,typing=true,pauseTimer=null;
+let pIdx=0,cIdx=0,typing=true;
 const tw=document.getElementById('typewriter-text');
 function typeStep(){
-  const plain=phrases[pIdx].replace(/<[^>]*>/g,'');
-  const full=phrases[pIdx];
+  const src=phrases[pIdx];
+  const plain=src.replace(/<[^>]*>/g,'');
   if(typing){
     cIdx++;
-    // render with html tags intact up to cIdx plain chars
-    let rendered='',count=0,i=0;
-    while(i<full.length&&count<cIdx){
-      if(full[i]==='<'){
-        const end=full.indexOf('>',i);
-        rendered+=full.slice(i,end+1);i=end+1;
-      } else {rendered+=full[i];i++;count++;}
-    }
-    tw.innerHTML=rendered;
-    if(cIdx>=plain.length){typing=false;setTimeout(typeStep,2000);return;}
+    let out='',cnt=0,i=0;
+    while(i<src.length&&cnt<cIdx){if(src[i]==='<'){const e=src.indexOf('>',i);out+=src.slice(i,e+1);i=e+1;}else{out+=src[i];i++;cnt++;}}
+    tw.innerHTML=out;
+    if(cIdx>=plain.length){typing=false;setTimeout(typeStep,2200);return;}
   } else {
     cIdx--;
-    if(cIdx<0){cIdx=0;pIdx=(pIdx+1)%phrases.length;typing=true;}
-    let rendered='',count=0,i=0,full2=phrases[pIdx];
-    // when erasing use current phrase
-    const curFull=phrases[(pIdx+(typing?0:-0))%phrases.length];
-    const prevFull=phrases[(pIdx+phrases.length-(typing?0:1))%phrases.length];
-    let src=typing?full2:phrases[(pIdx+phrases.length)%phrases.length];
-    // simpler: just strip to cIdx chars of previous phrase
-    src=phrases[(pIdx+phrases.length-(typing?0:1))%phrases.length];
-    let cnt2=0,j=0,out='';
-    while(j<src.length&&cnt2<cIdx){
-      if(src[j]==='<'){const e=src.indexOf('>',j);out+=src.slice(j,e+1);j=e+1;}
-      else{out+=src[j];j++;cnt2++;}
-    }
+    const src2=phrases[pIdx];
+    let out='',cnt=0,i=0;
+    while(i<src2.length&&cnt<cIdx){if(src2[i]==='<'){const e=src2.indexOf('>',i);out+=src2.slice(i,e+1);i=e+1;}else{out+=src2[i];i++;cnt++;}}
     tw.innerHTML=out;
     if(cIdx===0){pIdx=(pIdx+1)%phrases.length;typing=true;}
   }
-  setTimeout(typeStep,typing?45:28);
+  setTimeout(typeStep,typing?48:30);
 }
-setTimeout(typeStep,800);
+setTimeout(typeStep,900);
 
-// ── Neural network canvas ──
+// neural network
 (function(){
-  const canvas=document.getElementById('neural-canvas');
-  const ctx=canvas.getContext('2d');
-  let W,H,nodes=[],pulses=[],animId,frame=0;
+  const canvas=document.getElementById('neural-canvas'),ctx=canvas.getContext('2d');
+  let W,H,nodes=[],pulses=[],frame=0;
   const N=50,DIST=170;
-
-  function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
-
-  function init(){
-    nodes=[];
-    for(let i=0;i<N;i++) nodes.push({
-      x:Math.random()*W,y:Math.random()*H,
-      vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,
-      r:1.4+Math.random()*1.8
-    });
-  }
-
-  function spawnPulse(){
-    const a=nodes[Math.floor(Math.random()*N)];
-    const b=nodes[Math.floor(Math.random()*N)];
-    if(a===b) return;
-    if(Math.hypot(b.x-a.x,b.y-a.y)<DIST)
-      pulses.push({ax:a.x,ay:a.y,bx:b.x,by:b.y,t:0,sp:.009+Math.random()*.009});
-  }
-
+  function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight}
+  function init(){nodes=[];for(let i=0;i<N;i++)nodes.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.28,vy:(Math.random()-.5)*.28,r:1.4+Math.random()*1.8})}
+  function spawnPulse(){const a=nodes[Math.floor(Math.random()*N)],b=nodes[Math.floor(Math.random()*N)];if(a===b)return;if(Math.hypot(b.x-a.x,b.y-a.y)<DIST)pulses.push({ax:a.x,ay:a.y,bx:b.x,by:b.y,t:0,sp:.009+Math.random()*.009})}
   function draw(){
     ctx.clearRect(0,0,W,H);
-    nodes.forEach(n=>{
-      n.x+=n.vx;n.y+=n.vy;
-      if(n.x<0||n.x>W)n.vx*=-1;
-      if(n.y<0||n.y>H)n.vy*=-1;
-    });
-    // edges
-    for(let i=0;i<N;i++) for(let j=i+1;j<N;j++){
-      const dx=nodes[j].x-nodes[i].x,dy=nodes[j].y-nodes[i].y,d=Math.hypot(dx,dy);
-      if(d<DIST){
-        const a=(1-d/DIST)*0.08;
-        ctx.beginPath();
-        ctx.strokeStyle=`rgba(200,150,90,${a})`;
-        ctx.lineWidth=0.6;
-        ctx.moveTo(nodes[i].x,nodes[i].y);
-        ctx.lineTo(nodes[j].x,nodes[j].y);
-        ctx.stroke();
-      }
-    }
-    // nodes
-    nodes.forEach(n=>{
-      ctx.beginPath();ctx.arc(n.x,n.y,n.r,0,Math.PI*2);
-      ctx.fillStyle='rgba(200,150,90,0.18)';ctx.fill();
-      ctx.beginPath();ctx.arc(n.x,n.y,n.r*.45,0,Math.PI*2);
-      ctx.fillStyle='rgba(200,150,90,0.45)';ctx.fill();
-    });
-    // pulses
-    pulses=pulses.filter(p=>{
-      p.t+=p.sp;
-      if(p.t>1)return false;
-      const px=p.ax+(p.bx-p.ax)*p.t,py=p.ay+(p.by-p.ay)*p.t;
-      const fade=Math.sin(p.t*Math.PI);
-      ctx.beginPath();ctx.arc(px,py,3,0,Math.PI*2);
-      ctx.fillStyle=`rgba(200,150,90,${fade*.8})`;ctx.fill();
-      ctx.beginPath();ctx.arc(px,py,6,0,Math.PI*2);
-      ctx.strokeStyle=`rgba(200,150,90,${fade*.2})`;ctx.lineWidth=1;ctx.stroke();
-      return true;
-    });
+    nodes.forEach(n=>{n.x+=n.vx;n.y+=n.vy;if(n.x<0||n.x>W)n.vx*=-1;if(n.y<0||n.y>H)n.vy*=-1});
+    for(let i=0;i<N;i++)for(let j=i+1;j<N;j++){const dx=nodes[j].x-nodes[i].x,dy=nodes[j].y-nodes[i].y,d=Math.hypot(dx,dy);if(d<DIST){const a=(1-d/DIST)*0.07;ctx.beginPath();ctx.strokeStyle=`rgba(200,150,90,${a})`;ctx.lineWidth=0.6;ctx.moveTo(nodes[i].x,nodes[i].y);ctx.lineTo(nodes[j].x,nodes[j].y);ctx.stroke()}}
+    nodes.forEach(n=>{ctx.beginPath();ctx.arc(n.x,n.y,n.r,0,Math.PI*2);ctx.fillStyle='rgba(200,150,90,0.16)';ctx.fill();ctx.beginPath();ctx.arc(n.x,n.y,n.r*.45,0,Math.PI*2);ctx.fillStyle='rgba(200,150,90,0.4)';ctx.fill()});
+    pulses=pulses.filter(p=>{p.t+=p.sp;if(p.t>1)return false;const px=p.ax+(p.bx-p.ax)*p.t,py=p.ay+(p.by-p.ay)*p.t,fade=Math.sin(p.t*Math.PI);ctx.beginPath();ctx.arc(px,py,3,0,Math.PI*2);ctx.fillStyle=`rgba(200,150,90,${fade*.8})`;ctx.fill();ctx.beginPath();ctx.arc(px,py,6,0,Math.PI*2);ctx.strokeStyle=`rgba(200,150,90,${fade*.18})`;ctx.lineWidth=1;ctx.stroke();return true});
     if(frame%80===0)spawnPulse();
-    frame++;
-    animId=requestAnimationFrame(draw);
+    frame++;requestAnimationFrame(draw);
   }
-
   resize();init();draw();
-  window.addEventListener('resize',()=>{resize();init();});
+  window.addEventListener('resize',()=>{resize();init()});
 })();
 </script>
 </body>
